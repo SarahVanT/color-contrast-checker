@@ -29,8 +29,11 @@ body {
   /* used by many accessibility sites */
   font-family: Verdana, Geneva, sans-serif;
   font-size: 1.8rem;
+  letter-spacing: 0.12rem;
+  word-spacing: 0.16rem;
   line-height: 1.6;
   color: rgb(8, 8, 11);
+  background: #f8f8f8;
 }
 
 h1 {
@@ -39,7 +42,17 @@ h1 {
   font-weight: 700;
 }
 
-p {
+h2 {
+  font-size: 3.6rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.hero p {
   color: #fcfcfc;
 }
 
@@ -49,9 +62,42 @@ section.hero {
     rgb(2, 0, 97) 15%,
     rgb(97, 149, 219) 158.5%
   );
+
+  padding: var(--xxl) var(--xxl);
+}
+
+.how-it-works {
   padding: var(--xl) var(--m);
 }
 
-.hero-img i {
-  font-size: 4rem;
+.how-it-works h2 {
+  margin: 0 0 var(--s) 0;
+}
+
+/* Form Section */
+
+#contrastForm input[type="text"] {
+  padding: 0 var(--s);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  height: 4rem;
+  width: 100%;
+  font-size: 2.7rem;
+  border: 1px solid rgb(148, 148, 148);
+}
+
+#contrastForm input[type="color"] {
+  height: 4rem;
+  width: 100%;
+  padding: 0;
+  border: none;
+}
+
+label {
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  font-size: 1.8rem;
+  margin-bottom: var(--s);
 }
