@@ -8,35 +8,6 @@ const reverseButton = document.getElementById("reverse");
 const pattern = /[0-9A-Fa-f]{6}$/;
 // const pattern = /^#[0-9A-Fa-f]{6}$/;
 
-// Reverse Colors
-reverseButton.addEventListener("click", function (event) {
-  event.preventDefault();
-
-  // let temp = hex1Input.value;
-  // let hex1 = hex2Input.value;
-  // let hex2 = temp;
-  // console.log(hex1Input.value);
-  // console.log(hex2Input.value);
-  // let hex1 = hex1Input.value;
-  // let hex2 = hex2Input.value;
-  // let temp = hex1;
-  // hex1 = hex2;
-  // hex2 = temp;
-  let temp = hex1Input.value;
-  console.log(temp);
-  console.log(hex1Input.value);
-  hex1Input.setAttribute("value", `${hex2Input}`);
-  hex2Input.setAttribute("value", `${temp}`);
-  colorPicker1.setAttribute("value", `#${hex1Input.value}`);
-  colorPicker2.setAttribute("value", `#${hex2Input.value}`);
-  // Swapping values for hex codes
-  // hex1Input.setAttribute("value", `${hex1}`);
-  // hex2Input.setAttribute("value", `${hex2}`);
-  // Swapping and adding # sign values
-  // colorPicker1.setAttribute("value", `#${hex1}`);
-  // colorPicker2.setAttribute("value", `#${hex2}`);
-});
-
 // Hex #2
 hex2Input.addEventListener("keypress", function (event) {
   // Prevents the page from refressing
@@ -50,8 +21,8 @@ hex2Input.addEventListener("keypress", function (event) {
     const result = pattern.test(hexValue);
     if (result) {
       error2.style.display = "none";
-      colorPicker2.setAttribute("value", `#${hexValue}`);
-      hex2Input.setAttribute("value", `${hexValue}`);
+      colorPicker2.value = "#" + hexValue;
+      hex2Input.value = hexValue;
       console.log(result);
       // If result is false, display the error message
     } else {
@@ -73,13 +44,36 @@ hex1Input.addEventListener("keypress", function (event) {
     const result = pattern.test(hexValue);
     if (result) {
       error1.style.display = "none";
-      colorPicker1.setAttribute("value", `#${hexValue}`);
-      hex1Input.setAttribute("value", `${hexValue}`);
+      colorPicker1.value = "#" + hexValue;
+      hex1Input.value = hexValue;
       // If result is false, display the error message
     } else {
       error1.style.display = "block";
     }
   }
+});
+
+// Reverse Colors
+// doesn't update the value attribute in the HTML
+reverseButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  // Swap values
+  let temp = hex1Input.value;
+  hex1Input.value = hex2Input.value;
+  hex2Input.value = temp;
+
+  // Now update the color pickers using the new values
+  colorPicker1.value = "#" + hex1Input.value;
+  colorPicker2.value = "#" + hex2Input.value;
+
+  // Log the new values for debugging purposes
+  console.log(
+    "After swap:",
+    hex1Input.value,
+    colorPicker1.value,
+    hex2Input.value,
+    colorPicker2.value
+  );
 });
 
 // User clicks on hash symbol highlights input

@@ -86,6 +86,13 @@ section.hero {
   border: 1px solid rgb(148, 148, 148);
 }
 
+#contrastForm input[type="text"]:focus-visible,
+#contrastForm input[type="color"]:focus-visible {
+  outline: 3px solid black;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
 #contrastForm input[type="color"] {
   height: 4rem;
   width: 100%;
@@ -115,6 +122,14 @@ label {
 }
 
 .btn {
-  padding: var(--s) var(--s);
+  padding: var(--xs) var(--s);
   font-size: 1.8rem;
+}
+
+.btn:focus-visible {
+  color: var(--bs-btn-hover-color);
+  background-color: var(--bs-btn-hover-bg);
+  outline: 3px solid black;
+  outline-offset: 2px;
+  box-shadow: none;
 }
