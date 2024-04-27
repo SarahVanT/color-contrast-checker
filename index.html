@@ -46,11 +46,7 @@
                 <fieldset class="border border-dark rounded-2 p-2">
                   <legend class="float-none w-auto"><h3>Text Color</h3></legend>
                   <div class="form-group">
-                    <p
-                      id="error1"
-                      role="alert"
-                      style="display: none; font-weight: 600; font-size: 1.5rem"
-                    >
+                    <p id="error1" role="alert">
                       <i
                         class="fa-solid fa-circle-exclamation"
                         style="color: #000000"
@@ -86,8 +82,11 @@
                 </fieldset>
               </form>
             </div>
-            <div class="col-1 d-flex align-items-center justify-content-center">
-              <i class="fa-solid fa-repeat" style="font-size: 40px"></i>
+            <!-- Reverse button -->
+            <div class="col-2 d-flex align-items-center justify-content-center">
+              <button type="submit" class="btn btn-dark" id="reverse">
+                Reverse Colors
+              </button>
             </div>
             <div class="col-md-4">
               <form id="contrastForm" class="text-center">
@@ -96,6 +95,14 @@
                     <h3>Background Color</h3>
                   </legend>
                   <div class="form-group">
+                    <p id="error2" role="alert">
+                      <i
+                        class="fa-solid fa-circle-exclamation"
+                        style="color: #000000"
+                      ></i
+                      >&nbsp;Please enter a valid hex value without the &num;
+                      sign.
+                    </p>
                     <label for="hex2">Hex Code:</label>
                     <div class="col-6 mx-auto d-flex align-items-center">
                       <span id="hash2">#</span>
@@ -104,6 +111,7 @@
                         type="text"
                         class="form-control"
                         maxlength="6"
+                        value="563d7c"
                       />
                     </div>
                   </div>

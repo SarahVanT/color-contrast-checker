@@ -101,3 +101,20 @@ label {
   font-size: 1.8rem;
   margin-bottom: var(--s);
 }
+
+#error1,
+#error2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+#error1 {
+  display: none;
+}
+#error2 {
+  display: none;
+}
+
+.btn {
+  padding: var(--s) var(--s);
+  font-size: 1.8rem;
+}
