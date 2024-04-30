@@ -8,6 +8,25 @@ const reverseButton = document.getElementById("reverse");
 const pattern = /[0-9A-Fa-f]{6}$/;
 // const pattern = /^#[0-9A-Fa-f]{6}$/;
 
+// RGB format: RRGGBB
+function hexToRgb(hex) {
+  // Split into Red, Green, and Blue
+  // parseInt is taking first 2 characters from hex code (0 and 1)
+  // hexadecimal (base 16) system to a decimal (base 10) system.
+  // For example: hex code is #563D7C
+  var red = parseInt(hex.substring(0, 2), 16); // 56 => 86
+  var green = parseInt(hex.substring(2, 4), 16); // 3D => 61
+  var blue = parseInt(hex.substring(4, 6), 16); // 7C => 124
+
+  // Combining red, green, and blue
+  var rgb = `${red} ${green} ${blue}`;
+  return rgb;
+}
+
+var hexValue = hex2Input.value;
+var rgbValue = hexToRgb(hexValue);
+console.log(rgbValue);
+
 // Hex #2
 hex2Input.addEventListener("keypress", function (event) {
   // Prevents the page from refressing
