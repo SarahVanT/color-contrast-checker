@@ -11,9 +11,10 @@ const pattern = /[0-9A-Fa-f]{6}$/;
 // RGB format: RRGGBB
 function hexToRgb(hex) {
   // Split into Red, Green, and Blue
-  // parseInt is taking first 2 characters from hex code (0 and 1)
-  // hexadecimal (base 16) system to a decimal (base 10) system.
-  // For example: hex code is #563D7C
+  // parseInt is taking certain # of characters from string
+  // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F = 16
+  // hexadecimal (base 16) to a decimal (base 10)
+  // For example: #563D7C
   var red = parseInt(hex.substring(0, 2), 16); // 56 => 86
   var green = parseInt(hex.substring(2, 4), 16); // 3D => 61
   var blue = parseInt(hex.substring(4, 6), 16); // 7C => 124
@@ -26,6 +27,23 @@ function hexToRgb(hex) {
 var hexValue = hex2Input.value;
 var rgbValue = hexToRgb(hexValue);
 console.log(rgbValue);
+
+// Relative Luminense = 0.2126 * (R / 255) + 0.7152 * (G / 255) + 0.0722 * (B / 255)
+function calculateRelLuminense(r, g, b) {
+  var calculation =
+    0.2126 * (r / 255) + 0.7152 * (g / 255) + 0.0722 * (b / 255);
+  return calculation;
+}
+
+console.log(typeof rgbValue);
+var red = rgbValue.slice(0, 2).trim();
+var green = rgbValue.slice(2, 5).trim();
+var blue = rgbValue.slice(5).trim();
+console.log(red);
+console.log(green);
+console.log(blue);
+var luminance = calculateRelLuminense(red, green, blue);
+console.log(luminance);
 
 // Hex #2
 hex2Input.addEventListener("keypress", function (event) {
