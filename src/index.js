@@ -53,6 +53,22 @@ hex1Input.addEventListener("keypress", function (event) {
   }
 });
 
+// Changing Hex Code to value from Color Picker
+colorPicker1.addEventListener("input", function (event) {
+  var colorPickerValue = event.target.value;
+  var updatedPickerValue = colorPickerValue.replace("#", "");
+  console.log(updatedPickerValue);
+  hex1Input.value = updatedPickerValue;
+});
+
+// Changing Hex Code to value from Color Picker
+colorPicker2.addEventListener("input", function (event) {
+  var colorPickerValue = event.target.value;
+  var updatedPickerValue = colorPickerValue.replace("#", "");
+  console.log(updatedPickerValue);
+  hex2Input.value = updatedPickerValue;
+});
+
 // Reverse Colors
 // doesn't update the value attribute in the HTML
 reverseButton.addEventListener("click", function (event) {
@@ -84,28 +100,3 @@ document.getElementById("hash1").addEventListener("click", function () {
 document.getElementById("hash2").addEventListener("click", function () {
   document.getElementById("hex2").focus();
 });
-
-// hex1Input.addEventListener("keypress", function (event) {
-//   // Prevents the page from refressing
-//   if (event.key === "Enter") {
-//     event.preventDefault();
-//   }
-//   if (hex1Input.value.includes("#")) {
-//     console.log(hex1Input.value);
-//     // Display error message
-//     error1.style.display = "block";
-//   } else {
-//     let hexValue = `#${hex1Input.value}`;
-//     // Removing error message
-//     error1.style.display = "none";
-//     const result = pattern.test(hexValue);
-//     // If result is true (from checking pattern)
-//     if (result) {
-//       colorPicker1.setAttribute("value", `${hexValue}`);
-//       console.log(result);
-//       // If result is false, display the error message
-//     } else {
-//       error1.style.display = "block";
-//     }
-//   }
-// });
