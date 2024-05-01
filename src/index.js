@@ -6,7 +6,9 @@ let colorPicker2 = document.getElementById("color2");
 let error2 = document.getElementById("error2");
 const reverseButton = document.getElementById("reverse");
 const pattern = /[0-9A-Fa-f]{6}$/;
+let contrastRatioPlaceholder = document.getElementById("contrastRatio");
 // const pattern = /^#[0-9A-Fa-f]{6}$/;
+var luminance1, luminance2;
 
 // RGB format: RRGGBB
 function hexToRgb(hex) {
@@ -18,32 +20,43 @@ function hexToRgb(hex) {
   var red = parseInt(hex.substring(0, 2), 16); // 56 => 86
   var green = parseInt(hex.substring(2, 4), 16); // 3D => 61
   var blue = parseInt(hex.substring(4, 6), 16); // 7C => 124
+  var luminance;
 
   // Combining red, green, and blue
-  var rgb = `${red} ${green} ${blue}`;
-  return rgb;
+  // var rgb = `${red} ${green} ${blue}`;
+  return (luminance = calculateRelLuminense(red, green, blue));
+  // return {
+  //   rgb: rgb,
+  //   luminance: calculateRelLuminense(red, green, blue),
+  // };
 }
-
-var hexValue = hex2Input.value;
-var rgbValue = hexToRgb(hexValue);
-console.log(rgbValue);
 
 // Relative Luminense = 0.2126 * (R / 255) + 0.7152 * (G / 255) + 0.0722 * (B / 255)
 function calculateRelLuminense(r, g, b) {
-  var calculation =
+  var relativeLuminance =
     0.2126 * (r / 255) + 0.7152 * (g / 255) + 0.0722 * (b / 255);
-  return calculation;
+  return relativeLuminance;
 }
 
-console.log(typeof rgbValue);
-var red = rgbValue.slice(0, 2).trim();
-var green = rgbValue.slice(2, 5).trim();
-var blue = rgbValue.slice(5).trim();
-console.log(red);
-console.log(green);
-console.log(blue);
-var luminance = calculateRelLuminense(red, green, blue);
-console.log(luminance);
+function calculateContrastRatio(l1, l2) {
+  var ratio = (l1 + 0.05) / (l2 + 0.05);
+  console.log(ratio);
+  contrastRatioPlaceholder.innerText = `${ratio.toFixed(2)}:1`;
+  return ratio;
+}
+
+
+// Providing hex value to function
+var luminance1 = hexToRgb(hex1Input.value);
+console.log(luminance1);
+var luminance2 = hexToRgb(hex2Input.value);
+console.log(luminance2);
+
+if (luminance1 > luminance2) {
+  contrastRatio = calculateContrastRatio(luminance1, luminance2);
+} else {
+  contrastRatio = calculateContrastRatio(luminance2, luminance1);
+}
 
 // Hex #2
 hex2Input.addEventListener("keypress", function (event) {
@@ -118,15 +131,6 @@ reverseButton.addEventListener("click", function (event) {
   // Now update the color pickers using the new values
   colorPicker1.value = "#" + hex1Input.value;
   colorPicker2.value = "#" + hex2Input.value;
-
-  // Log the new values for debugging purposes
-  console.log(
-    "After swap:",
-    hex1Input.value,
-    colorPicker1.value,
-    hex2Input.value,
-    colorPicker2.value
-  );
 });
 
 // User clicks on hash symbol highlights input

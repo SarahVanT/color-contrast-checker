@@ -32,7 +32,7 @@
             <p>
               A color contrast checker calculates the contrast ratio between
               text and background colors. Input the hex code or select the color
-              from the picker, then the tool rates the ratio based on the
+              from the color picker, then the tool rates the ratio based on the
               recommended WCAG guidelines.
             </p>
           </div>
@@ -131,7 +131,16 @@
             </div>
           </div>
           <!-- Contrast ratio will go here! -->
-          <div class="row"></div>
+          <div class="row">
+            <div
+              class="d-flex flex-column align-items-center justify-content-center mt-5"
+            >
+              <div class="border p-5 text-center">
+                <p>Contrast Ratio</p>
+                <h3 id="contrastRatio"></h3>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
